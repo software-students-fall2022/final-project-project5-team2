@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photobooth Web App</title>
+        <link 
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Photobooth Web App</h1>
+                <nav>
+                    <a href="{{ url_for('home') }}">Home</a>
+                </nav>
+            </header>
+            <main>
+                {% block container %} {% endblock %}
+            </main>
+            <footer>
+                <p>
+                    Source code available
+                    <a href="https://github.com/software-students-fall2022/final-project-project5-team2">
+                        here.
+                    </a>
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
