@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nyu-prompt-pictures"
+description = "This is a photo-booth app to take pictures based on prompts and display pictures in a social-media-type app."
+version = "0.0.1"
+authors = [
+  { name="Pedro", email="pdb323@nyu.edu" },
+  { name="Laura", email="lml9279@nyu.edu" },
+  { name="Eduarda", email="em4047@nyu.edu" },
+  { name="Lucy", email="___@nyu.edu" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+keywords = ["python", "package", "photo-booth", "speech-to-text"]
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+"Homepage" = "https://github.com/software-students-fall2022/containerized-app-exercise-team9"
+"Repository" = "https://github.com/software-students-fall2022/containerized-app-exercise-team9.git"
+"Bug Tracker" = "https://github.com/software-students-fall2022/containerized-app-exercise-team9/issues"
+
+[project.scripts]
+app = "app.__main__:main"
