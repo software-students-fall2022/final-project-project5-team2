@@ -21,6 +21,7 @@ def home():
     """
     Home Page
     """
+    return render_template('base.html')
 
 # route to handle any errors
 @app.errorhandler(Exception)
@@ -33,5 +34,4 @@ def handle_error(e):
 #run app
 if __name__ == "__main__":
     PORT = os.getenv('PORT',5000)
-
     app.run(port=PORT)
