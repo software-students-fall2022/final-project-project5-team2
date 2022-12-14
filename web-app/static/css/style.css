@@ -4,8 +4,7 @@
 }
 
 .welcome {
-    margin-top: 35%;
-    font-family: GothamBold;
+    margin-top: 40px;
 }
 
 .btn.btn-outline-primary {
@@ -41,7 +40,7 @@ body {
 .login {
     color: #330662;  
     width: 70%;
-    margin-top: 25%;
+    margin-top: 40px;
 }
 
 #loginUser {
@@ -50,4 +49,49 @@ body {
 
 #loginPassword {
     margin-bottom: 15px;
+}
+
+.btn.btn-outline-primary.filter {
+    padding-top: 6px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.home {
+    margin-top: 20px;
+}
+
+.search {
+    background-color:  #fcf9fe;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: 1px solid #7b5aa6 ;
+    color:#330662;
+    padding: 8px;
+    font-size: 15px;
+}
+
+.btn.btn-outline-primary.search {
+    font-size: 13px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+#new-post-text {
+    color:white;
+    padding: 15px;
+    background-color:#330662 ;
+    border-radius: 10px;
+    border: 1px solid #7b5aa6 ;
+    margin-bottom: 10px;
+
+}
+
+#new-post-text > *{
+    margin-bottom: 5px;
+}
+
+#post-options {
+    padding: 10px;
+    text-align: center;
 }

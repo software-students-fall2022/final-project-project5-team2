@@ -32,6 +32,16 @@ def login():
 def signup():
     return render_template("signup.html")
 
+@app.route("/feed")
+def feed():
+    return render_template("feed.html")
+
+@app.route("/new-post")
+def newPost():
+    return render_template("newPost.html")
+
+
+
 # route to handle any errors
 @app.errorhandler(Exception)
 def handle_error(e):
