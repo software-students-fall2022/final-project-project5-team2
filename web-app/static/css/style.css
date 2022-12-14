@@ -1,0 +1,53 @@
+@font-face {
+    font-family: GothamBold;
+    src: url(../css/fonts/gotham/Gotham-Bold.otf);
+}
+
+.welcome {
+    margin-top: 35%;
+    font-family: GothamBold;
+}
+
+.btn.btn-outline-primary {
+    border: 1px solid #330662;
+    color: #330662;    
+}
+
+.btn.btn-outline-primary:hover {
+    border: 1px solid #330662;
+    background-color: #330662;
+    color: white;
+}
+
+.btn.btn-primary {
+    border: 1px solid #702b9d !important;
+    background-color: #702b9d !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn.btn-primary:hover{
+    border: 1px solid #330662 !important;
+    background-color: #330662 !important;
+}
+
+body {
+    background-color: #eee6f3;
+}
+
+.login h1 {
+    font-family: GothamBold;
+}
+
+.login {
+    color: #330662;  
+    width: 70%;
+    margin-top: 25%;
+}
+
+#loginUser {
+    margin-bottom: 15px;
+}
+
+#loginPassword {
+    margin-bottom: 15px;
+}
