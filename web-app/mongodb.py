@@ -6,18 +6,18 @@ import os
 
 class Database(object):
 
-
     load_dotenv()
     url = os.getenv('MONGODB_CONNSTRING')
     database=None
     client=None
+    ca = certifi.where()
     
     @staticmethod
     def initialize():
-        connection= MongoClient(Database.url)
+        connection= MongoClient(Database.url, tlsCAFile=Database.ca)
         try:
             Database.client=connection
-            Database.database = connection["db"]
+            Database.database = connection.app
             print(' *', 'Connected to MongoDB!') 
         except Exception as e:
             print(' *', "Failed to connect to MongoDB at")
@@ -33,7 +33,7 @@ class Database(object):
 
     @staticmethod
     def get_all(collection):
-        return (Database.database[collection].find())
+        return Database.find(collection)
 
     @staticmethod
     def find_single(collection, query, field=""):

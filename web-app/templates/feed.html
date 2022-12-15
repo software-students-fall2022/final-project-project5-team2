@@ -17,7 +17,21 @@
         </div>
         <div class="row"> 
             <div class="col-8">
-
+                {% for post in posts %}
+                    <div>
+                        {{ post['username'] }}
+                    </div>
+                    <div>
+                        {{ post['prompt'] }}
+                    </div>
+                    <img src="{{ post['photo'] }}" alt="post">
+                    <div>
+                        {{ post['time_since'] }}
+                    </div>
+                    <div>
+                        {{ post['votes'] }} likes
+                    </div>
+                {% endfor %}
             </div>
             <div class="col-4"> 
                 <a href="/new-post" type="button" style="font-size: 15px; font-family: GothamBold;" class="btn btn-primary w-100"> + New Post </a>
