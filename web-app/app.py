@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, make_response
 from dotenv import load_dotenv
-import os
+from mongodb import Database
 
-import pymongo
+import random
+import os
 
 #instantiate the app
 app = Flask(__name__)
@@ -11,7 +12,7 @@ app = Flask(__name__)
 load_dotenv()
 
 #connect to db
-
+Database.initialize()
 
 #routes
 @app.route('/')
@@ -49,6 +50,14 @@ def handle_error(e):
     Output errors.
     """
     return render_template('error.html', error=e), 404
+
+def get_all_prompts():
+    prompts = Database.get_all('prompts')
+    return prompts
+
+def get_random_prompt():
+    prompt = random.choice(get_all_prompts())
+    return prompt
 
 #run app
 if __name__ == "__main__":
