@@ -95,3 +95,12 @@ body {
     padding: 10px;
     text-align: center;
 }
+
+.posts-container {
+    margin-bottom: 20px;
+}
+
+.post {
+    border: 1px solid #7b5aa6;
+    border-radius: 10px;
+}
