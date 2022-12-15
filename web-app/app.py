@@ -23,6 +23,25 @@ def home():
     """
     return render_template('base.html')
 
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+@app.route("/feed")
+def feed():
+    return render_template("feed.html")
+
+@app.route("/new-post")
+def newPost():
+    return render_template("newPost.html")
+
+
+
 # route to handle any errors
 @app.errorhandler(Exception)
 def handle_error(e):
