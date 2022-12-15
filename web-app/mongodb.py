@@ -11,13 +11,11 @@ class Database(object):
     url = os.getenv('MONGODB_CONNSTRING')
     database=None
     client=None
-    ca = certifi.where()
     
     @staticmethod
     def initialize():
-        connection= MongoClient(Database.url, tlsCAFile=Database.ca)
+        connection= MongoClient(Database.url)
         try:
-            connection.admin.command('ping')
             Database.client=connection
             Database.database = connection["db"]
             print(' *', 'Connected to MongoDB!') 
