@@ -22,7 +22,7 @@ def home():
     """
     Home Page
     """
-    return render_template('base.html')
+    return render_template('welcome.html')
 
 
 @app.route("/login")
