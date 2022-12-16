@@ -11,16 +11,16 @@
     <body style="background-color: #eee6f3;">
         <div class="container mt-20 p-15 login">
            <h1> Signup </h1>
-           <form>
+           <form method="POST" action="">
             <div class="form-group">
             <p> <i> Already have an account? Click <a style="color: #330662; text-decoration: underline;" href="/login"> here</a> to login! </i> </p>
               <label for="username"> Username </label>
 
-              <input type="username" class="form-control" id="loginUser" aria-describedby="username" placeholder="Enter Username" minlength="3" required>
+              <input type="username" name="username" class="form-control" id="loginUser" aria-describedby="username" placeholder="Enter Username" minlength="3" required>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="loginPassword" placeholder="Password" minlength="3" required>
+              <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password" minlength="3" required>
             </div>
             <button type="submit" class="btn btn-primary"> Sign up  </button>
           </form>
