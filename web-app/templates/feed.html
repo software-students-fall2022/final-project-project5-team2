@@ -20,41 +20,28 @@
         </div>
         <div class="row"> 
             <div class="col-8">
-
-                {% for post in posts %}
-                    <div>
-                        {{ post['username'] }}
-                    </div>
-                    <div>
-                        {{ post['prompt'] }}
-                    </div>
-                    <img src="{{ post['photo'] }}" alt="post">
-                    <div>
-                        {{ post['time_since'] }}
-                    </div>
-                    <div>
-                        {{ post['votes'] }} likes
-                    </div>
-                {% endfor %}
+            
                 <div class ="posts-container">
                     <!-- all inner text can be changed with references to properties of a document-->
                     <!-- loop over all elements in db.find()-->
                      <!-- then , for each element -->
-
-                    <div class = "row post p-1 mb-2">
+                     {% for post in posts %}
+                    <div class = "row post p-2 mb-2">
                         <div style="font-size: 17px; color: white;" class="col-1">
                             <i class="bi bi-hand-thumbs-up"></i>
-                            <p style="margin-bottom: 0px;"> 11 </p>
+                            <p style="margin-bottom: 0px;"> {{post['votes']}} </p>
                             <i class="bi bi-hand-thumbs-down"></i>
                          </div>
 
                          <div class="col-11 p-0 post-info">
-                            <b> @username </b>
-                            <div style="height: 200px; background-color: rgb(255, 255, 255); width: 95%;"> photo here</div>
-                            <p style="width: 95%;" class="small"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <b>   @{{ post['username'] }}</b>
+                            <p class="small"> <i> {{post['time_since']}} </i> </p>
+                            <img style="width: 95%;" src="{{ post['photo'] }}" alt="post">
+                            <p style="width: 95%;" class="small text-center">   {{ post['prompt'] }}</p>
 
                          </div>
                     </div>
+                    {% endfor %}
                 </div>
 
             </div>
