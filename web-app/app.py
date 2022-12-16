@@ -56,7 +56,7 @@ def signup():
         return redirect(url_for('signup'))
 
     hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt(14))
-    users.insert({'username': request.form['username'], 'password': hashed, 'email': request.form['email']})
+    users.insert({'username': request.form['username'], 'password': hashed})
     return redirect(url_for('login'))
 
     return render_template("signup.html")
