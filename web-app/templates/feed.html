@@ -20,6 +20,22 @@
         </div>
         <div class="row"> 
             <div class="col-8">
+
+                {% for post in posts %}
+                    <div>
+                        {{ post['username'] }}
+                    </div>
+                    <div>
+                        {{ post['prompt'] }}
+                    </div>
+                    <img src="{{ post['photo'] }}" alt="post">
+                    <div>
+                        {{ post['time_since'] }}
+                    </div>
+                    <div>
+                        {{ post['votes'] }} likes
+                    </div>
+                {% endfor %}
                 <div class ="posts-container">
                     <!-- all inner text can be changed with references to properties of a document-->
                     <!-- loop over all elements in db.find()-->
