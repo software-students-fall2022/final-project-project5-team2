@@ -104,5 +104,5 @@ def get_random_prompt():
 
 #run app
 if __name__ == "__main__":
-    PORT = os.getenv('PORT',5000)
+    PORT = os.getenv('PORT', 8080)
     app.run(port=PORT)
