@@ -19,7 +19,15 @@
             <div id="post-options">
             <button type="submit" class="btn btn-outline-primary"> Upload existing photo </button>
             <button type="submit" class="btn btn-primary"> Use your computer camera </button>
-            </div>
+			<form method="post" action="{{ url_for('tasks') }}">
+			<input type="submit" value="Stop/Start" name="stop" />
+			<input type="submit" value="Capture" name="click"/>
+			<input type="submit" value="Grey" name="grey" />
+			<input type="submit" value="Negative" name="neg" />
+			<input type="submit" value="Face Only" name="face" />
+			</form>
+            <img src="{{ url_for('video_feed') }}" height="80%">
+        </div>
             
 
 
