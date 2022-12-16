@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, make_response
+from flask import Flask, render_template, request, redirect, url_for, make_response, session, flash
 from dotenv import load_dotenv
 from bson.json_util import dumps, loads, ObjectId
 from mongodb import Database
 from datetime import datetime
+import bcrypt
 
 import random
 import os
@@ -15,7 +16,7 @@ load_dotenv()
 
 #connect to db
 Database.initialize()
-
+app.config['MONGO_dbname'] = 'users'
 #routes
 @app.route('/')
 
@@ -29,10 +30,35 @@ def home():
 
 @app.route("/login")
 def login():
+    if request.method == 'POST':
+        users = mongo.db.users
+        signin_user = users.find_one({'username': request.form['username']})
+
+        if signin_user:
+            if bcrypt.hashpw(request.form['password'].encode('utf-8'), signin_user['password'].encode('utf-8')) == \
+                    signin_user['password'].encode('utf-8'):
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
+
+        flash('Username and password combination is wrong')
+
+
     return render_template("login.html")
 
 @app.route("/signup")
 def signup():
+    if request.method == 'POST':
+        users = mongo.db.users
+        signup_user = users.find_one({'username': request.form['username']})
+
+    if signup:
+        flash(request.form['username'] + ' username is already exist')
+        return redirect(url_for('signup'))
+
+    hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt(14))
+    users.insert({'username': request.form['username'], 'password': hashed, 'email': request.form['email']})
+    return redirect(url_for('login'))
+
     return render_template("signup.html")
 
 @app.route("/feed")
