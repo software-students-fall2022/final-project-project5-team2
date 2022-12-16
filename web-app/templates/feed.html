@@ -20,8 +20,10 @@
     <div class = "container home">
         <h1 style="font-family: GothamBold; color: #330662"> Home </h1>
         <div style = "margin-bottom: 10px;"class="filter"> 
-        <button class="btn btn-outline-primary filter"> Most Liked </button>
-        <button class="btn btn-outline-primary filter"> Most Recent </button>
+        <form method="POST"> 
+        <button name="sortMostLiked" value="sortMostLiked" class="btn btn-outline-primary filter"> Most Liked </button>
+        <button name="sortMostRecent" value="sortMostRecent" class="btn btn-outline-primary filter"> Most Recent </button>
+        </form>
         </div>
         <div class="row"> 
             <div class="col-8">
@@ -53,9 +55,9 @@
             <div class="col-4"> 
                 <a href="/new-post" type="button" style="font-size: 15px; font-family: GothamBold;" class="btn btn-primary w-100"> + New Post </a>
                 <div class="search p-3"> 
-                    <form> 
+                    <form method="POST"> 
                     <label for="searchPosts"> Search posts </label>
-                    <input type="text" class="form-control" style="font-size: 15px;" id="searchQuery" aria-describedby="searchQuery" placeholder="Keywords">
+                    <input type="text" name="query" class="form-control" style="font-size: 15px;" id="searchQuery" aria-describedby="searchQuery" placeholder="Keywords">
                     <button type="submit" class="btn btn-outline-primary search"> Search </a>
                     </form>
                 </div>
