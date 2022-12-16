@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+
         <title>NYU Photobooth</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link 
@@ -11,12 +14,13 @@
    <body>
     <div class = "container home">
         <h1 style="font-family: GothamBold; color: #330662"> Home </h1>
-        <div class="filter"> 
+        <div style = "margin-bottom: 10px;"class="filter"> 
         <button class="btn btn-outline-primary filter"> Most Liked </button>
         <button class="btn btn-outline-primary filter"> Most Recent </button>
         </div>
         <div class="row"> 
             <div class="col-8">
+
                 {% for post in posts %}
                     <div>
                         {{ post['username'] }}
@@ -32,6 +36,27 @@
                         {{ post['votes'] }} likes
                     </div>
                 {% endfor %}
+                <div class ="posts-container">
+                    <!-- all inner text can be changed with references to properties of a document-->
+                    <!-- loop over all elements in db.find()-->
+                     <!-- then , for each element -->
+
+                    <div class = "row post p-1 mb-2">
+                        <div style="font-size: 17px; color: white;" class="col-1">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                            <p style="margin-bottom: 0px;"> 11 </p>
+                            <i class="bi bi-hand-thumbs-down"></i>
+                         </div>
+
+                         <div class="col-11 p-0 post-info">
+                            <b> @username </b>
+                            <div style="height: 200px; background-color: rgb(255, 255, 255); width: 95%;"> photo here</div>
+                            <p style="width: 95%;" class="small"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                         </div>
+                    </div>
+                </div>
+
             </div>
             <div class="col-4"> 
                 <a href="/new-post" type="button" style="font-size: 15px; font-family: GothamBold;" class="btn btn-primary w-100"> + New Post </a>
