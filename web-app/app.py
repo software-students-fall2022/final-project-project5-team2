@@ -72,6 +72,14 @@ def feed():
         post['time_since'] = get_time_from(date_posted, now)
     return render_template("feed.html", posts=posts)
 
+@app.route("/post/<id>")
+def see_post(id):
+    post = Database.find_single('photos', id, "_id")
+    print(post)
+    return render_template("post.html", post=post)
+
+
+
 @app.route("/new-post")
 def newPost():
     return render_template("newPost.html")
