@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, make_response, session, flash
+from flask import Flask, render_template, request, session, redirect, url_for, make_response, session, flash, Response
 from dotenv import load_dotenv
 from bson.json_util import dumps, loads, ObjectId
 from mongodb import Database
 from datetime import datetime
 import bcrypt
+
 
 import random
 import os
@@ -21,28 +22,39 @@ app.config['MONGO_dbname'] = 'users'
 @app.route('/')
 
 #home page
-def home():
+def index():
     """
     Home Page
     """
     return render_template('welcome.html')
 
-
 @app.route("/login")
 def login():
-    if request.method == 'POST':
-        users = mongo.db.users
-        signin_user = users.find_one({'username': request.form['username']})
+    # message = 'Please login to your account'
+    # if "email" in session:
+    #     return redirect(url_for("logged_in"))
 
-        if signin_user:
-            if bcrypt.hashpw(request.form['password'].encode('utf-8'), signin_user['password'].encode('utf-8')) == \
-                    signin_user['password'].encode('utf-8'):
-                session['username'] = request.form['username']
-                return redirect(url_for('index'))
+    # if request.method == "POST":
+    #     email = request.form.get("email")
+    #     password = request.form.get("password")
 
-        flash('Username and password combination is wrong')
-
-
+       
+    #     email_found = records.find_one({"email": email})
+    #     if email_found:
+    #         email_val = email_found['email']
+    #         passwordcheck = email_found['password']
+            
+    #         if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+    #             session["email"] = email_val
+    #             return redirect(url_for('logged_in'))
+    #         else:
+    #             if "email" in session:
+    #                 return redirect(url_for("logged_in"))
+    #             message = 'Wrong password'
+    #             return render_template('login.html', message=message)
+    #     else:
+    #         message = 'Email not found'
+    #         return render_template('login.html', message=message)
     return render_template("login.html")
 
 @app.route("/signup")
@@ -63,13 +75,18 @@ def signup():
 
 @app.route("/feed")
 def feed():
-    posts = get_all_posts()
-    sortby = request.args.get('sortby', '')
-    posts = sort_posts(posts, sortby)
-    now = datetime.now()
-    for post in posts:
-        date_posted = post['time_created']
-        post['time_since'] = get_time_from(date_posted, now)
+    if "email" in session:
+        email = session["email"]
+            
+        posts = get_all_posts()
+        sortby = request.args.get('sortby', '')
+        posts = sort_posts(posts, sortby)
+        now = datetime.now()
+        for post in posts:
+            date_posted = post['time_created']
+            post['time_since'] = get_time_from(date_posted, now)
+    else:
+        return redirect(url_for("login"))
     return render_template("feed.html", posts=posts)
 
 @app.route("/post/<id>")
@@ -135,6 +152,45 @@ def get_all_prompts():
 def get_random_prompt():
     prompt = random.choice(get_all_prompts())
     return prompt
+
+
+# auth
+
+# @app.route("/", methods=['post', 'get'])
+# def index():
+#     # message = ''
+#     # if 'email' in session:
+#     #     return redirect(url_for("logged_in"))
+#     # if request.method == "POST":
+#     #     user = request.form.get("user")
+#     #     email = request.form.get("email")
+
+#     #     password = request.form.get("password")
+#     #     password_confirm = request.form.get("password_confirm")
+
+#     #     user_found = records.find_one({"user": user})
+#     #     email_found = records.find_one({"email": email})
+
+#     #     if user_found:
+#     #         message = "This username is already taken."
+#     #         return render_template('index.html')
+#     #     if email_found:
+#     #         message = "This email already has an account linked to it."
+#     #         return render_template('index.html')
+#     #     if password != password_confirm: 
+#     #         message = "Passwords should match."
+#     #         return render_template('index.html')
+#     #     else:
+#     #         hashed = bcrypt.hashpw(password_confirm.encode('utf-8'), bcrypt.gensalt())
+#     #         user_input = {"user": user, 'email': email, 'password': hashed}
+#     #         records.insert_one(user_input)
+
+#     #         user_data = records.find_one({"email": email})
+#     #         new_email = user_data['email']
+
+#     #         return render_template('feed.html', email = new_email)
+#     return render_template('index.html')
+
 
 #run app
 if __name__ == "__main__":
