@@ -8,7 +8,7 @@
             href="../static/css/style.css"
         />
     </head>
-    <body style="background-color: #eee6f3;">
+    <body>
         <div class="container mt-20 p-15 login">
            <h1> Login </h1>
            {% with messages = get_flashed_messages() %}
@@ -20,7 +20,7 @@
             </ul>
             {% endif %}
             {% endwith %}
-           <p> <i> Don't have an account? Click <a style="color: #330662; text-decoration: underline;" href="/signup"> here</a> to signup! </i> </p>
+           <p> <i> Don't have an account? Click <a class="here-btn" href="/signup"> here</a> to signup! </i> </p>
            <form method="POST" action="">
             <div class="form-group" >
               <label for="username"> Username </label>

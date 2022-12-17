@@ -47,17 +47,17 @@ def login():
 
 @app.route("/signup")
 def signup():
-    if request.method == 'POST':
-        users = mongo.db.users
-        signup_user = users.find_one({'username': request.form['username']})
+    # if request.method == 'POST':
+    #     users = mongo.db.users
+    #     signup_user = users.find_one({'username': request.form['username']})
 
-    if signup:
-        flash(request.form['username'] + ' username is already exist')
-        return redirect(url_for('signup'))
+    # if signup:
+    #     flash(request.form['username'] + ' username is already exist')
+    #     return redirect(url_for('signup'))
 
-    hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt(14))
-    users.insert({'username': request.form['username'], 'password': hashed})
-    return redirect(url_for('login'))
+    # hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt(14))
+    # users.insert({'username': request.form['username'], 'password': hashed})
+    # return redirect(url_for('login'))
 
     return render_template("signup.html")
 
