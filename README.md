@@ -1,6 +1,9 @@
-# Final Project (CHANGE TO NAME)
+# NYU Photobooth
+
 ![Web App build & test](https://github.com/software-students-fall2022/final-project-project5-team2/actions/workflows/web-app.yml/badge.svg)
 
+TODO add description
+TODO add link to deployed app
 
 ## Team members
 
