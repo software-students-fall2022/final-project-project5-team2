@@ -31,7 +31,7 @@ class Database(object):
     def find(collection, query="", field=""):
         return (Database.database[collection].find(query,field))
 
-    @staticmethod
+    @staticmethod  
     def get_all(collection):
         return Database.find(collection)
 
