@@ -167,8 +167,8 @@ h3 {
 }
 #camera, #camera--view, #camera--sensor, #camera--output{
   position: fixed;
-  height: 75%;
-  width: 75%;
+  height: 50%;
+  width: 50%;
   object-fit: cover;
 }#camera--view, #camera--sensor, #camera--output{
   transform: scaleX(-1);
