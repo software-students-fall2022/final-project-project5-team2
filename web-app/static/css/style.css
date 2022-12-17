@@ -53,12 +53,13 @@ body {
 
 .btn.btn-outline-primary.filter {
     padding-top: 6px;
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: 13px;
 }
 
 .home {
     margin-top: 10px;
+
 }
 
 .search {
@@ -104,6 +105,7 @@ body {
     background-color: #7b5aa6b8;
     border: 1px solid #330662;
     border-radius: 10px;
+    margin:0;
 }
 
 .post-info {
@@ -121,4 +123,56 @@ body {
     border-radius: 30px;
     height: fit-content;
     margin-bottom: 10px;
+.topnav-right {
+  padding-right: 20px; 
+  padding-top: 10px; 
+  height: 10px; 
+  text-align: right;
+  color:#330662 !important;
+
+}
+
+h1 {
+  font-family: GothamBold; 
+  color: #330662;
+}
+
+.filter {
+  margin-bottom: 10px;
+}
+
+.col-likes {
+  font-size: 17px; 
+  color: white;
+}
+
+.img-post {
+  width: 95%;
+}
+.prompt {
+  width: 95%;
+  padding: 20px 0 0 0;
+
+}
+
+.btn-newpost {
+  font-size: 15px !important; 
+  font-family: GothamBold !important;
+}
+
+.here-btn {
+  color: #330662; 
+  text-decoration: underline;
+}
+.here-btn:hover {
+  color: #330662; 
+  text-decoration: underline;
+}
+.here-btn:active {
+  color: #330662; 
+  text-decoration: underline;
+}
+
+h3 {
+  color:#330662;
 }
