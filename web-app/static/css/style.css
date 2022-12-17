@@ -59,6 +59,7 @@ body {
 
 .home {
     margin-top: 10px;
+
 }
 
 .search {
@@ -104,6 +105,7 @@ body {
     background-color: #7b5aa6b8;
     border: 1px solid #330662;
     border-radius: 10px;
+    margin:0;
 }
 
 .post-info {
@@ -131,4 +133,35 @@ h1 {
 .col-likes {
   font-size: 17px; 
   color: white;
+}
+
+.img-post {
+  width: 95%;
+}
+.prompt {
+  width: 95%;
+  padding: 20px 0 0 0;
+
+}
+
+.btn-newpost {
+  font-size: 15px !important; 
+  font-family: GothamBold !important;
+}
+
+.here-btn {
+  color: #330662; 
+  text-decoration: underline;
+}
+.here-btn:hover {
+  color: #330662; 
+  text-decoration: underline;
+}
+.here-btn:active {
+  color: #330662; 
+  text-decoration: underline;
+}
+
+h3 {
+  color:#330662;
 }

@@ -33,15 +33,15 @@
                     <div class = "row post p-2 mb-2">
                         <div class="col-1 col-likes">
                             <i class="bi bi-hand-thumbs-up"></i>
-                            <p style="margin-bottom: 0px;"> {{post['votes']}} </p>
+                            <p> {{post['votes']}} </p>
                             <i class="bi bi-hand-thumbs-down"></i>
                          </div>
 
                          <div class="col-11 p-0 post-info">
-                            <b>   @{{ post['username'] }}</b>
-                            <p class="small"> <i> {{post['time_since']}} </i> </p>
-                            <img style="width: 95%;" src="{{ post['photo'] }}" alt="post">
-                            <p style="width: 95%;" class="small text-center">   {{ post['prompt'] }}</p>
+                            <b>@{{ post['username'] }}</b>
+                            <p class="small"> <i>{{post['time_since']}}</i> </p>
+                            <img class="img-post" src="{{ post['photo'] }}" alt="post">
+                            <p class="small text-center prompt">{{ post['prompt'] }}</p>
 
                          </div>
                     </div>
@@ -50,15 +50,14 @@
 
             </div>
             <div class="col-4"> 
-                <a href="/new-post" type="button" style="font-size: 15px; font-family: GothamBold;" class="btn btn-primary w-100"> + New Post </a>
+                <a href="/new-post" type="button" class="btn btn-primary w-100 btn-newpost"> + New Post </a>
                 <div class="search p-3"> 
                     <form method="POST"> 
-                    <label for="searchPosts"> Search posts </label>
-                    <input type="text" name="query" class="form-control" style="font-size: 15px;" id="searchQuery" aria-describedby="searchQuery" placeholder="Keywords">
-                    <button type="submit" class="btn btn-outline-primary search"> Search </a>
+                      <label for="searchPosts">Search posts </label>
+                      <input type="text" name="query" class="form-control" id="searchQuery" aria-describedby="searchQuery" placeholder="Keywords">
+                      <button type="submit" class="btn btn-outline-primary search"> Search </a>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
