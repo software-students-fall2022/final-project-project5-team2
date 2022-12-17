@@ -53,7 +53,7 @@ body {
 
 .btn.btn-outline-primary.filter {
     padding-top: 6px;
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: 13px;
 }
 
@@ -108,4 +108,27 @@ body {
 
 .post-info {
     color: white;
+}
+
+.topnav-right {
+  padding-right: 20px; 
+  padding-top: 10px; 
+  height: 10px; 
+  text-align: right;
+  color:#330662 !important;
+
+}
+
+h1 {
+  font-family: GothamBold; 
+  color: #330662;
+}
+
+.filter {
+  margin-bottom: 10px;
+}
+
+.col-likes {
+  font-size: 17px; 
+  color: white;
 }
