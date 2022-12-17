@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>NYU Photobooth</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link 
-            rel="stylesheet"
-            href="../static/css/style.css"
-        />
-    </head>
-    <body></body>
-        <div class="container home new-post">
-            <h1 class="mt-5 mb-5"> New Post </h1>
-            <div class="mb-5" id ="new-post-text"> 
-            <p> <b> Your generated caption: </b> </p> 
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua <p>
-            </div>
-            <h3  class="mb-5" >Post your reaction to the caption!</h3>
-            <div id="post-options">
-            <button type="submit" class="btn btn-outline-primary"> Upload existing photo </button>
-            <button type="submit" class="btn btn-primary"> Use your computer camera </button>
-			<form method="post" action="{{ url_for('tasks') }}">
-			<input type="submit" value="Stop/Start" name="stop" />
-			<input type="submit" value="Capture" name="click"/>
-			<input type="submit" value="Grey" name="grey" />
-			<input type="submit" value="Negative" name="neg" />
-			<input type="submit" value="Face Only" name="face" />
-			</form>
-            <img src="{{ url_for('video_feed') }}" height="80%">
-        </div>
-            
-
-
-        </div>
-    </body>
+  <head>
+    <title>NYU Photobooth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <div class="container home new-post">
+      <h1 style="font-family: GothamBold; color:#330662"> New Post </h1>
+      <div id ="new-post-text"> 
+        <p> <b> Your generated caption: </b> </p> 
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua <p>
+      </div>
+      <h3 style="color:#330662">Post your reaction to the caption!</h3>
+      <div id="post-options">
+        <button type="submit" class="btn btn-outline-primary"> Upload existing photo </button>
+        <button type="submit" class="btn btn-primary"> Use your computer camera </button>
+      </div>
+    </div>
+  </body>
+>>>>>>> 04fb455 (adding camera feature)
 </html>
