@@ -109,3 +109,16 @@ body {
 .post-info {
     color: white;
 }
+
+.single-post {
+    padding: 4px;
+}
+
+.comment {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #330662;
+    border-radius: 30px;
+    height: fit-content;
+    margin-bottom: 10px;
+}
