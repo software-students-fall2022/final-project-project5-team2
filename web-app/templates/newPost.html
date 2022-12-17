@@ -7,17 +7,24 @@
   </head>
   <body>
     <div class="container home new-post">
-      <h1 style="font-family: GothamBold; color:#330662"> New Post </h1>
+      <h1> New Post </h1>
       <div id ="new-post-text"> 
         <p> <b> Your generated caption: </b> </p> 
         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua <p>
       </div>
-      <h3 style="color:#330662">Post your reaction to the caption!</h3>
-      <div id="post-options">
-        <button type="submit" class="btn btn-outline-primary"> Upload existing photo </button>
-        <button type="submit" class="btn btn-primary"> Use your computer camera </button>
+      <h3>Post your reaction to the caption!</h3>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Add existing picture</label>
+        <input class="form-control" type="file" id="formFile">
+      </div>
+      <div id="camera">
+        <!-- Camera sensor -->
+        <canvas id="camera--sensor"></canvas>        <!-- Camera view -->
+        <video id="camera--view" autoplay playsinline></video>        <!-- Camera output -->
+        <img src="//:0" alt="" id="camera--output">        <!-- Camera trigger -->
+        <button id="camera--trigger">Take a picture</button>
       </div>
     </div>
+    <script src="../static/app.js"></script>
   </body>
->>>>>>> 04fb455 (adding camera feature)
 </html>
