@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, session, redirect, url_for, make_response, session, flash, Response
-from flask_session import Session
 from dotenv import load_dotenv
 from bson.json_util import dumps, loads, ObjectId
 from mongodb import Database
@@ -75,12 +74,10 @@ def signup():
         hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt(14))
         Database.insert_one('users', {'username': request.form['username'], 'password': hashed})
         return redirect(url_for('login'))
-
     return render_template("signup.html")
 
 @app.route("/feed")
 def feed():
-
     logged_in = "username" in session
     
     sortby = request.args.get('sortby', '')
