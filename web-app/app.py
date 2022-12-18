@@ -136,8 +136,11 @@ def vote():
 
 @app.route("/post/<id>")
 def see_post(id):
-    post = Database.find_single('photos', id, "_id")
-    print(post)
+    id = ObjectId(id)
+    post = Database.find_single('photos', {'_id': id})
+    now = datetime.now()
+    date_posted = post['time_created']
+    post['time_since'] = get_time_from(date_posted, now)
     return render_template("post.html", post=post)
 
 
@@ -157,6 +160,7 @@ def newPost():
 #     """
 #     print(e)
 #     return render_template('error.html', error=e), 404
+
 
 def sort_posts(posts, sortby):
     if sortby == 'likes':
