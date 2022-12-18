@@ -91,6 +91,7 @@ def feed():
     for post in posts:
         date_posted = post['time_created']
         post['time_since'] = get_time_from(date_posted, now)
+        post['votes'] = len(post['upvotes']) - len(post['downvotes'])
         
     return render_template("feed.html", posts=posts, logged_in=logged_in)
 
@@ -99,10 +100,6 @@ def vote():
     opposites = {
         'upvotes': 'downvotes',
         'downvotes': 'upvotes'
-    }
-    votevals = {
-        'upvotes': 1,
-        'downvotes': -1
     }
 
     url = request.form.get('url', 'index')
@@ -117,20 +114,15 @@ def vote():
     vote = request.form.get('vote')
 
     op = opposites[vote]
-    
-    val = votevals[vote]
 
     if username in post[vote]:
         Database.update('photos', {"_id": post_id}, {'$pull': { vote: username}})
-        Database.update('photos', {"_id": post_id}, {'$inc': { 'votes': -val}})
         return redirect(url_for(url))
     
     if username in post[op]:
         Database.update('photos', {"_id": post_id}, {'$pull': { op: username}})
-        Database.update('photos', {"_id": post_id}, {'$inc': { 'votes': val}})
 
     Database.update('photos', {"_id": post_id}, {'$push': { vote: username}})
-    Database.update('photos', {"_id": post_id}, {'$inc': { 'votes': val}})
     
     return redirect(url_for(url))
 
