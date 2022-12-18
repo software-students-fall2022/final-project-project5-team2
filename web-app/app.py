@@ -94,6 +94,46 @@ def feed():
         
     return render_template("feed.html", posts=posts, logged_in=logged_in)
 
+@app.route("/vote", methods=['POST'])
+def vote():
+    opposites = {
+        'upvotes': 'downvotes',
+        'downvotes': 'upvotes'
+    }
+    votevals = {
+        'upvotes': 1,
+        'downvotes': -1
+    }
+
+    url = request.form.get('url', 'index')
+    if "username" not in session:
+        flash("You must sign in to vote")
+        return redirect(url_for(url))
+    
+    username = session['username']
+    
+    post_id = ObjectId(request.form.get('post_id'))
+    post = Database.find_single('photos', {"_id": post_id})
+    vote = request.form.get('vote')
+
+    op = opposites[vote]
+    
+    val = votevals[vote]
+
+    if username in post[vote]:
+        Database.update('photos', {"_id": post_id}, {'$pull': { vote: username}})
+        Database.update('photos', {"_id": post_id}, {'$inc': { 'votes': -val}})
+        return redirect(url_for(url))
+    
+    if username in post[op]:
+        Database.update('photos', {"_id": post_id}, {'$pull': { op: username}})
+        Database.update('photos', {"_id": post_id}, {'$inc': { 'votes': val}})
+
+    Database.update('photos', {"_id": post_id}, {'$push': { vote: username}})
+    Database.update('photos', {"_id": post_id}, {'$inc': { 'votes': val}})
+    
+    return redirect(url_for(url))
+
 @app.route("/post/<id>")
 def see_post(id):
     post = Database.find_single('photos', id, "_id")
@@ -110,13 +150,13 @@ def newPost():
     return render_template("newPost.html", prompt=get_random_prompt())
 
 # route to handle any errors
-@app.errorhandler(Exception)
-def handle_error(e):
-    """
-    Output errors.
-    """
-    print(e)
-    return render_template('error.html', error=e), 404
+# @app.errorhandler(Exception)
+# def handle_error(e):
+#     """
+#     Output errors.
+#     """
+#     print(e)
+#     return render_template('error.html', error=e), 404
 
 def sort_posts(posts, sortby):
     if sortby == 'likes':
