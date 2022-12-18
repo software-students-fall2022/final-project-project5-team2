@@ -207,7 +207,7 @@ def get_all_prompts():
     return loads(dumps(prompts))
 
 def get_random_prompt():
-    prompt = random.choice(get_all_prompts())
+    prompt = random.choice(get_all_prompts())['message']
     return prompt
 
 
@@ -253,5 +253,6 @@ def get_random_prompt():
 if __name__ == "__main__":
 
 
-    PORT = os.getenv('PORT', 8080)
-    app.run(port=PORT)
+    PORT = os.getenv('PORT', 5001)
+    HOST = os.getenv('host', '0.0.0.0')
+    app.run(host=HOST, port=PORT)

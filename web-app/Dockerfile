@@ -1,11 +1,18 @@
 # syntax=docker/dockerfile:1
 FROM python:3.11-alpine
+
 WORKDIR /web-app
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-EXPOSE 5000
-COPY . .
-CMD ["flask", "run", "--host=0.0.0.0"]
+
+ADD . /web-app
+
+ENV MONGODB_CONNSTRING="mongodb+srv://root:pass@photobooth.pxudifq.mongodb.net/?retryWrites=true&w=majority"
+
+ENV HOST='0.0.0.0'
+
+ENV PORT=5001
+
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+EXPOSE 80
+
+CMD ["python3", "./app.py"]
