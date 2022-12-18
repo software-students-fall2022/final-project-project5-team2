@@ -6,24 +6,21 @@
 
         <title>NYU Photobooth</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link 
-            rel="stylesheet"
-            href="../static/css/style.css"
-        />
+        <link rel="stylesheet" href="../static/css/style.css"/>
     </head>
    <body>
-    <div style="padding-right: 20px; padding-top: 10px; height: 10px; text-align: right;" class="topnav-right">
-        <form method="POST">
-        <a type="button" name="logout" style="color:#330662" href="#search">Logout</a>
+    <div class="topnav-right">
+        <form method="POST" action="{{ url_for('index') }}">
+          <button type="submit" class="btn btn-primary">Logout</a>
         </form>
       </div>
     <div class = "container home">
-        <h1 style="font-family: GothamBold; color: #330662"> Home </h1>
-        <div style = "margin-bottom: 10px;"class="filter"> 
-        <form method="POST"> 
-        <button name="sortMostLiked" value="sortMostLiked" class="btn btn-outline-primary filter"> Most Liked </button>
-        <button name="sortMostRecent" value="sortMostRecent" class="btn btn-outline-primary filter"> Most Recent </button>
-        </form>
+        <h1>Home</h1>
+        <div class="filter"> 
+            <form method="GET"> 
+                <button name="sortby" value="likes" class="btn btn-outline-primary filter"> Most Liked </button>
+                <button name="sortby" value="recent" class="btn btn-outline-primary filter"> Most Recent </button>
+            </form>
         </div>
         <div class="row"> 
             <div class="col-8">
@@ -34,17 +31,21 @@
                      <!-- then , for each element -->
                      {% for post in posts %}
                     <div class = "row post p-2 mb-2">
-                        <div style="font-size: 17px; color: white;" class="col-1">
+                        <div class="col-1 col-likes">
                             <i class="bi bi-hand-thumbs-up"></i>
-                            <p style="margin-bottom: 0px;"> {{post['votes']}} </p>
+                            <p> {{post['votes']}} </p>
                             <i class="bi bi-hand-thumbs-down"></i>
                          </div>
 
                          <div class="col-11 p-0 post-info">
-                            <b>   @{{ post['username'] }}</b>
-                            <p class="small"> <i> {{post['time_since']}} </i> </p>
-                            <img style="width: 95%;" src="{{ post['photo'] }}" alt="post">
-                            <p style="width: 95%;" class="small text-center">   {{ post['prompt'] }}</p>
+
+                            <b>@{{ post['username'] }}</b>
+                            <p class="small"> <i>{{post['time_since']}}</i> </p>
+                            <img class="img-post" src="{{ post['photo'] }}" alt="post">
+                            <p class="small text-center prompt">{{ post['prompt'] }}</p>
+                            <div>
+                            <a type="button" href="/post/{{ post['_id'] }}" style="font-size: 14px; float: right; margin-right: 40px; margin-top: -10px; margin-bottom: 10px;" class="btn btn-primary"> View Post <i class="bi bi-arrow-right"></i> </a>
+                            </div>
 
                          </div>
                     </div>
@@ -53,15 +54,14 @@
 
             </div>
             <div class="col-4"> 
-                <a href="/new-post" type="button" style="font-size: 15px; font-family: GothamBold;" class="btn btn-primary w-100"> + New Post </a>
+                <a href="/new-post" type="button" class="btn btn-primary w-100 btn-newpost"> + New Post </a>
                 <div class="search p-3"> 
-                    <form method="POST"> 
-                    <label for="searchPosts"> Search posts </label>
-                    <input type="text" name="query" class="form-control" style="font-size: 15px;" id="searchQuery" aria-describedby="searchQuery" placeholder="Keywords">
-                    <button type="submit" class="btn btn-outline-primary search"> Search </a>
+                    <form method="GET"> 
+                      <label for="searchPosts">Search posts </label>
+                      <input type="text" name="query" class="form-control" id="searchQuery" aria-describedby="searchQuery" placeholder="Keywords">
+                      <button type="submit" class="btn btn-outline-primary search"> Search </a>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
