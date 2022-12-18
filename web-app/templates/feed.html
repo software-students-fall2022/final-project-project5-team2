@@ -51,11 +51,19 @@
                                 <input type="hidden" name="url" value="feed" />
                                 <input type="hidden" name="post_id" id="post_id" value="{{ post['_id'] }}" />
                                 <button style="color:white" type="submit" name="vote" value="upvotes" class="btn">
-                                    <i class="bi bi-arrow-up-circle-fill"></i>
+                                    {% if username in post['upvotes'] %}
+                                        <i class="bi bi-arrow-up-circle-fill"></i>
+                                    {% else %}
+                                        <i class="bi bi-arrow-up-circle"></i>
+                                    {% endif %}
                                 </button>
                                 <p style="text-align: center; margin-right: 0; margin-left: 0; margin-bottom: 0px;"> {{post['votes']}}</p>
                                 <button style="color:white" type="submit" name="vote" value="downvotes" class="btn">
-                                    <i class="bi bi-arrow-down-circle-fill"></i>
+                                    {% if username in post['downvotes'] %}
+                                         <i class="bi bi-arrow-down-circle-fill"></i>
+                                    {% else %}
+                                         <i class="bi bi-arrow-down-circle"></i>
+                                    {% endif %}
                                 </button>
                             </form>
                          </div>

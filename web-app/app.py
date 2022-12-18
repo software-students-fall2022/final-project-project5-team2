@@ -79,6 +79,11 @@ def signup():
 @app.route("/feed")
 def feed():
     logged_in = "username" in session
+
+    if logged_in:
+        username = session['username']
+    else:
+        username = False
     
     sortby = request.args.get('sortby', '')
     query = request.args.get('query', '')
@@ -92,7 +97,7 @@ def feed():
         date_posted = post['time_created']
         post['time_since'] = get_time_from(date_posted, now)
         
-    return render_template("feed.html", posts=posts, logged_in=logged_in)
+    return render_template("feed.html", posts=posts, logged_in=logged_in, username=username)
 
 @app.route("/vote", methods=['POST'])
 def vote():
