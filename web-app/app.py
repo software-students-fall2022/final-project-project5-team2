@@ -146,7 +146,8 @@ def see_post(id):
     if (request.method == "POST"):
         newCommentObj = {'username': user, 'comment': request.form['comment_body']}
         ## print(newCommentObj)
-        update = Database.update('photos', {"_id": id}, {'$push': { 'comments' : newCommentObj} })
+        id = ObjectId(id)
+        Database.update('photos', {"_id": id}, {'$push': { 'comments' : newCommentObj} })
 
     id = ObjectId(id)
     post = Database.find_single('photos', {'_id': id})
