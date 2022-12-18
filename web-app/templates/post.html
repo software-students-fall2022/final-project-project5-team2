@@ -19,12 +19,26 @@
                 <h5 style="font-family: GothamBold; color: #330662; margin-top: 15px;"> @{{post['username']}} – <i> {{post['time_since']}} </i> </h5>
                 <p> {{post['upvotes']|length}} likes, {{post['downvotes']|length}} dislikes</p>
         
-                <img style="height: 400px; width: 95%; background-color: gray; margin-left: auto; margin-right: auto;" src="{{ post['photo'] }}" alt="post" /> 
+                <img style="width: 95%; margin-left: auto; margin-right: auto;" src="{{ post['photo'] }}" alt="post" /> 
                 <p class="text-center"> {{post['prompt']}} </p>
 
             </div>
             <div class="post-comments">
-                <h3 style="font-family: GothamBold; color: #330662; margin-top: 15px;"> Comments ({{post['comments']|length}}) </h3>
+                <h3 class= "col gx-0"style="font-family: GothamBold; color: #330662; margin-top: 15px;"> Comments ({{post['comments']|length}}) </h3>
+                {% if logged_in %}
+                <label for="user"> Add your comment </label>
+                <div class="container gx-0">
+                    <form method="POST" class="row mb-2 p-2">
+                        <div class="col-11">
+                            <input class="form-control" name="comment_body" aria-describedby="commentBody" placeholder="Your comment here" required>
+                            <p class="small gx-1 mt-0"> <i> Commenting as @{{username}} </i> </p>
+                        </div>
+                        <div class="col-1 gx-0">
+                            <button type="submit" class="btn btn-primary w-100"> Post </button>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
                 {% for comment in post['comments'] %}
                     <div class="comment">
                         <p style="font-family: GothamBold;"> <b> @{{comment['username']}} </b> </p>
