@@ -25,20 +25,20 @@
             </div>
             <div class="post-comments">
                 <h3 class= "col gx-0"style="font-family: GothamBold; color: #330662; margin-top: 15px;"> Comments ({{post['comments']|length}}) </h3>
+                {% if logged_in %}
                 <label for="user"> Add your comment </label>
                 <div class="container gx-0">
-                    <form method="POST" class="row mb-3 p-2">
+                    <form method="POST" class="row mb-2 p-2">
                         <div class="col-11">
-                            <input class="form-control" name="comment_body" aria-describedby="commentBody" placeholder="Your comment here">
-                            <input type="hidden" name="post_id" id="post_id" value="{{ post['_id'] }}" />
+                            <input class="form-control" name="comment_body" aria-describedby="commentBody" placeholder="Your comment here" required>
+                            <p class="small gx-1 mt-0"> <i> Commenting as @{{username}} </i> </p>
                         </div>
                         <div class="col-1 gx-0">
                             <button type="submit" class="btn btn-primary w-100"> Post </button>
                         </div>
                     </form>
-
                 </div>
-        
+                {% endif %}
                 {% for comment in post['comments'] %}
                     <div class="comment">
                         <p style="font-family: GothamBold;"> <b> @{{comment['username']}} </b> </p>

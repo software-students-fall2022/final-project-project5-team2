@@ -134,14 +134,26 @@ def vote():
     
     return redirect(url_for(url))
 
-@app.route("/post/<id>")
+@app.route("/post/<id>" ,methods=['POST', 'GET'])
 def see_post(id):
+    logged_in = "username" in session
+
+    if logged_in:
+        user = session["username"]
+    else:
+        user = ""
+
+    if (request.method == "POST"):
+        newCommentObj = {'username': user, 'comment': request.form['comment_body']}
+        ## print(newCommentObj)
+        update = Database.update('photos', {"_id": id}, {'$push': { 'comments' : newCommentObj} })
+
     id = ObjectId(id)
     post = Database.find_single('photos', {'_id': id})
     now = datetime.now()
     date_posted = post['time_created']
     post['time_since'] = get_time_from(date_posted, now)
-    return render_template("post.html", post=post)
+    return render_template("post.html", post=post, logged_in=logged_in, username=user)
 
 
 
