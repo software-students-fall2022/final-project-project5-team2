@@ -23,11 +23,11 @@
     <div class = "container home">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <ul class=flashes>
+            <div class="alert alert-danger" role="alert">
               {% for message in messages %}
-              <li>{{ message }}</li>
+             {{message}}
               {% endfor %}
-            </ul>
+              </div>
             {% endif %}
             {% endwith %}
         <h1>Home</h1>
@@ -50,12 +50,12 @@
                             <form method="POST" action="{{ url_for('vote') }}">
                                 <input type="hidden" name="url" value="feed" />
                                 <input type="hidden" name="post_id" id="post_id" value="{{ post['_id'] }}" />
-                                <button type="submit" name="vote" value="upvotes" class="btn">
-                                    <i class="bi bi-hand-thumbs-up"></i>
+                                <button style="color:white" type="submit" name="vote" value="upvotes" class="btn">
+                                    <i class="bi bi-arrow-up-circle-fill"></i>
                                 </button>
-                                <p> {{post['votes']}}</p>
-                                <button type="submit" name="vote" value="downvotes" class="btn">
-                                    <i class="bi bi-hand-thumbs-down"></i>
+                                <p style="text-align: center; margin-right: 0; margin-left: 0; margin-bottom: 0px;"> {{post['votes']}}</p>
+                                <button style="color:white" type="submit" name="vote" value="downvotes" class="btn">
+                                    <i class="bi bi-arrow-down-circle-fill"></i>
                                 </button>
                             </form>
                          </div>
