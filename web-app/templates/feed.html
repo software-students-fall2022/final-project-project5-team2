@@ -10,17 +10,17 @@
     </head>
    <body>
     <div class="topnav-right">
-        <form method="POST">
-          <a type="button" class="btn btn-primary" name="logout" href="#search">Logout</a>
+        <form method="POST" action="{{ url_for('index') }}">
+          <button type="submit" class="btn btn-primary">Logout</a>
         </form>
       </div>
     <div class = "container home">
         <h1>Home</h1>
         <div class="filter"> 
-          <form method="POST"> 
-            <button name="sortMostLiked" value="sortMostLiked" class="btn btn-outline-primary filter"> Most Liked </button>
-            <button name="sortMostRecent" value="sortMostRecent" class="btn btn-outline-primary filter"> Most Recent </button>
-          </form>
+            <form method="GET"> 
+                <button name="sortby" value="likes" class="btn btn-outline-primary filter"> Most Liked </button>
+                <button name="sortby" value="recent" class="btn btn-outline-primary filter"> Most Recent </button>
+            </form>
         </div>
         <div class="row"> 
             <div class="col-8">
@@ -56,7 +56,7 @@
             <div class="col-4"> 
                 <a href="/new-post" type="button" class="btn btn-primary w-100 btn-newpost"> + New Post </a>
                 <div class="search p-3"> 
-                    <form method="POST"> 
+                    <form method="GET"> 
                       <label for="searchPosts">Search posts </label>
                       <input type="text" name="query" class="form-control" id="searchQuery" aria-describedby="searchQuery" placeholder="Keywords">
                       <button type="submit" class="btn btn-outline-primary search"> Search </a>

@@ -12,82 +12,87 @@ import os
 #instantiate the app
 app = Flask(__name__)
 
+app.config['SESSION_TYPE'] = "mongodb"
+app.config['SECRET_KEY'] = os.urandom(24)
+
 #load config options from .env file
 load_dotenv()
 
 #connect to db
 Database.initialize()
 app.config['MONGO_dbname'] = 'users'
-#routes
-@app.route('/')
 
-#home page
+#routes
+@app.route('/', methods=['POST', 'GET'])
 def index():
     """
     Home Page
     """
+    # User logs out
+    if request.method == "POST" and "username" in session:
+        session.clear()
+
+    if "username" in session:
+        return redirect(url_for("feed"))
+
     return render_template('welcome.html')
 
-@app.route("/login")
+@app.route("/login", methods=['POST', 'GET'])
 def login():
-    # message = 'Please login to your account'
-    # if "email" in session:
-    #     return redirect(url_for("logged_in"))
+    message = 'Please login to your account'
+    if "username" in session:
+        return redirect(url_for("feed"))
 
-    # if request.method == "POST":
-    #     email = request.form.get("email")
-    #     password = request.form.get("password")
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
 
-       
-    #     email_found = records.find_one({"email": email})
-    #     if email_found:
-    #         email_val = email_found['email']
-    #         passwordcheck = email_found['password']
+        user_found = Database.find_single('users', {"username": username})
+        if user_found:
+            user_val = user_found['username']
+            passwordcheck = user_found['password']
             
-    #         if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
-    #             session["email"] = email_val
-    #             return redirect(url_for('logged_in'))
-    #         else:
-    #             if "email" in session:
-    #                 return redirect(url_for("logged_in"))
-    #             message = 'Wrong password'
-    #             return render_template('login.html', message=message)
-    #     else:
-    #         message = 'Email not found'
-    #         return render_template('login.html', message=message)
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+                session["username"] = user_val
+                return redirect(url_for('feed'))
+            else:
+                message = 'Wrong password'
+                return render_template('login.html', message=message)
+        else:
+            message = 'Username not found'
+            return render_template('login.html', message=message)
     return render_template("login.html")
 
-@app.route("/signup")
+@app.route("/signup", methods=['POST', 'GET'])
 def signup():
-    # if request.method == 'POST':
-    #     users = mongo.db.users
-    #     signup_user = users.find_one({'username': request.form['username']})
+    if request.method == 'POST':
+        signup_user = Database.find_single('users', {'username': request.form['username']})
+        if signup_user:
+            flash(f"Username {request.form['username']} is already taken")
+            return redirect(url_for('signup'))
 
-    # if signup:
-    #     flash(request.form['username'] + ' username is already exist')
-    #     return redirect(url_for('signup'))
-
-    # hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt(14))
-    # users.insert({'username': request.form['username'], 'password': hashed})
-    # return redirect(url_for('login'))
-
+        hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt(14))
+        Database.insert_one('users', {'username': request.form['username'], 'password': hashed})
+        return redirect(url_for('login'))
     return render_template("signup.html")
 
 @app.route("/feed")
 def feed():
-    if "email" in session:
-        email = session["email"]
-            
-        posts = get_all_posts()
-        sortby = request.args.get('sortby', '')
-        posts = sort_posts(posts, sortby)
-        now = datetime.now()
-        for post in posts:
-            date_posted = post['time_created']
-            post['time_since'] = get_time_from(date_posted, now)
-    else:
-        return redirect(url_for("login"))
-    return render_template("feed.html", posts=posts)
+    logged_in = "username" in session
+    
+    sortby = request.args.get('sortby', '')
+    query = request.args.get('query', '')
+        
+    posts = get_all_posts()
+
+    posts = [post for post in posts if ( query.lower() in post['prompt'].lower())]
+    posts = sort_posts(posts, sortby)
+    now = datetime.now()
+    for post in posts:
+        date_posted = post['time_created']
+        post['time_since'] = get_time_from(date_posted, now)
+        
+    return render_template("feed.html", posts=posts, logged_in=logged_in)
 
 @app.route("/post/<id>")
 def see_post(id):
@@ -99,7 +104,10 @@ def see_post(id):
 
 @app.route("/new-post")
 def newPost():
-    return render_template("newPost.html")
+    if "username" not in session:
+        return redirect(url_for("login"))
+        
+    return render_template("newPost.html", prompt=get_random_prompt())
 
 # route to handle any errors
 @app.errorhandler(Exception)
@@ -194,5 +202,7 @@ def get_random_prompt():
 
 #run app
 if __name__ == "__main__":
+
+
     PORT = os.getenv('PORT', 8080)
     app.run(port=PORT)
