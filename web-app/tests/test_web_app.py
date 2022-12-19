@@ -4,11 +4,8 @@ from app import sort_posts
 from app import get_time_from
 
 from datetime import datetime, date
-import os
 
 class Tests:
-
-    os.environ["MONGODB_CONNSTRING"] = "mongodb+srv://root:pass@photobooth.pxudifq.mongodb.net/?retryWrites=true&w=majority"
 
     def test_sanity_check(self):
         """
@@ -17,13 +14,6 @@ class Tests:
         expected = True # the value we expect to be present
         actual = True # the value we see in reality
         assert actual == expected, "Expected True to be equal to True!"
-
-    def test_get_random_prompt_returns(self):
-        """
-        Test if get_random_prompt returns a string
-        """
-        prompt = get_random_prompt()
-        assert isinstance(prompt, str), f"Expected prompt to be of type str, instead it was of {type(prompt)}"
 
     def test_sort_by_likes(self):
         """
