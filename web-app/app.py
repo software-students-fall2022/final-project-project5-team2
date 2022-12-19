@@ -91,12 +91,12 @@ def feed():
     posts = get_all_posts()
 
     posts = [post for post in posts if ( query.lower() in post['prompt'].lower())]
-    posts = sort_posts(posts, sortby)
     now = datetime.now()
     for post in posts:
         date_posted = post['time_created']
         post['time_since'] = get_time_from(date_posted, now)
         post['votes'] = len(post['upvotes']) - len(post['downvotes'])
+    posts = sort_posts(posts, sortby)
         
     return render_template("feed.html", posts=posts, logged_in=logged_in, username=username)
 
