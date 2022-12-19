@@ -23,7 +23,7 @@ Users can choose to create or not create an account. Those who choose to not cre
 
 ## Running locally 
 1. Clone repo. 
-2. In your local copy of the repo, run the following comamnd in your Terminal:
+2. In your local copy of the repo, run the following command in your Terminal:
 
 ```console
 cd web-app
@@ -31,7 +31,7 @@ cd web-app
 
 3. Pip3 install all dependencies in [requirements.txt](https://github.com/software-students-fall2022/final-project-project5-team2/blob/main/web-app/requirements.txt) within the web-app directory. 
 
-4. In a .env file in the root directory, establish a connection to a database using a variable named MONGODB_CONNSTRING.
+4. In a .env file in the root directory, establish a connection to a MongoDB database using a variable named MONGODB_CONNSTRING.
 
 5. Now, when you go to the web-app directory, you can just run the following command: 
 
@@ -54,7 +54,7 @@ docker pull pbaggio/nyu-photobooth
 3. Then run the following command in the same chosen directory
 
 ```console
-docker pull pbaggio/nyu-photobooth
+docker run pbaggio/nyu-photobooth
 ```
 
 
