@@ -155,12 +155,30 @@ def see_post(id):
 
 
 
-@app.route("/new-post")
+@app.route("/new-post",methods=['POST', 'GET'])
 def newPost():
     if "username" not in session:
         return redirect(url_for("login"))
+    else:
+        user = session["username"]
+
+    if (request.method == "POST"):
+        emptyArr = []
+        newPostObj = {"username": user, 
+        "photo": request.form.get('opImage'), 
+        "prompt": request.form.get('opPrompt'),
+        "time_created": datetime.now(),
+        'comments': emptyArr,
+        "downvotes": emptyArr,
+        "upvotes": emptyArr,
+        "votes": 0
+        }
+        Database.insert_one('photos', newPostObj)
+        return redirect(url_for("feed"))
+
         
-    return render_template("newPost.html", prompt=get_random_prompt())
+    else:
+        return render_template("newPost.html", prompt=get_random_prompt(), user=user)
 
 # route to handle any errors
 # @app.errorhandler(Exception)

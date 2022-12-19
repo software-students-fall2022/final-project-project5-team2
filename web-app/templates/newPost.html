@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/style.css" />
   </head>
   <body>
+    <form method="POST">
     <div class="container home new-post">
       <h1> New Post </h1>
       <div id ="new-post-text"> 
@@ -13,18 +14,26 @@
         <p> {{prompt}} <p>
       </div>
       <h3>Post your reaction to the caption!</h3>
-      <div class="mb-3">
-        <input class="form-control" type="file" id="formFile">
-      </div>
       <div id="camera">
         <!-- Camera sensor -->
         <canvas id="camera--sensor"></canvas>        <!-- Camera view -->
         <video id="camera--view" autoplay playsinline></video>        <!-- Camera output -->
 
         <img src="//:0" alt="" id="camera--output">        <!-- Camera trigger -->
-        <button id="camera--trigger">Take a picture</button>
+        <div class = "button-container">
+          <button class="btn btn-primary" id="camera--trigger"> Click! </button>
+          <button style="display: none;"class="btn btn-outline-primary" id="camera--submit"> Continue </button>
+          
+        </div>
+        <img alt="user's input image"> 
+
+        <input type="hidden" id="opImage" name="opImage" required>
+        <input type="hidden" id="opUser" name="opUser" value="{{user}}" required>
+        <input type="hidden" id="opPrompt" name="opPrompt" value="{{prompt}}" required>
+      
       </div>
     </div>
+   </form>
     <script src="../static/app.js"></script>
   </body>
 </html>
