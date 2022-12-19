@@ -31,3 +31,13 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          
+  deploy:
+    runs-on: ubuntu-latest
+    needs: push_to_registry
+    steps:
+      - name: DigitalOcean App Platform Deployment
+        uses: digitalocean/app_action@main
+        with:
+            app_name: nyu-photobooth
+            token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
