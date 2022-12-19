@@ -4,8 +4,11 @@ from app import sort_posts
 from app import get_time_from
 
 from datetime import datetime, date
+import os
 
 class Tests:
+
+    os.environ["MONGODB_CONNSTRING"] = "mongodb+srv://root:pass@photobooth.pxudifq.mongodb.net/?retryWrites=true&w=majority"
 
     def test_sanity_check(self):
         """
