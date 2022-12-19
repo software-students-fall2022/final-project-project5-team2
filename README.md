@@ -50,13 +50,13 @@ to start the server.
 2. Run the following command in terminal, in any root directory on your machine
 
 ```console
-docker pull pbaggio/nyu-photobooth
+docker pull pbaggio/nyu-photobooth:main
 ```
 
 3. Then run the following command in the same chosen directory
 
 ```console
-docker run pbaggio/nyu-photobooth
+docker run -ti --rm -p 5001:5001 pbaggio/nyu-photooth:main
 ```
 
 5. Check out http://127.0.0.1:5001 in your browser, on your machine. 
