@@ -181,13 +181,13 @@ def newPost():
         return render_template("newPost.html", prompt=get_random_prompt(), user=user)
 
 # route to handle any errors
-# @app.errorhandler(Exception)
-# def handle_error(e):
-#     """
-#     Output errors.
-#     """
-#     print(e)
-#     return render_template('error.html', error=e), 404
+@app.errorhandler(Exception)
+def handle_error(e):
+    """
+    Output errors.
+    """
+    print(e)
+    return render_template('error.html', error=e), 404
 
 
 def sort_posts(posts, sortby):
@@ -234,48 +234,10 @@ def get_random_prompt():
     return prompt
 
 
-# auth
-
-# @app.route("/", methods=['post', 'get'])
-# def index():
-#     # message = ''
-#     # if 'email' in session:
-#     #     return redirect(url_for("logged_in"))
-#     # if request.method == "POST":
-#     #     user = request.form.get("user")
-#     #     email = request.form.get("email")
-
-#     #     password = request.form.get("password")
-#     #     password_confirm = request.form.get("password_confirm")
-
-#     #     user_found = records.find_one({"user": user})
-#     #     email_found = records.find_one({"email": email})
-
-#     #     if user_found:
-#     #         message = "This username is already taken."
-#     #         return render_template('index.html')
-#     #     if email_found:
-#     #         message = "This email already has an account linked to it."
-#     #         return render_template('index.html')
-#     #     if password != password_confirm: 
-#     #         message = "Passwords should match."
-#     #         return render_template('index.html')
-#     #     else:
-#     #         hashed = bcrypt.hashpw(password_confirm.encode('utf-8'), bcrypt.gensalt())
-#     #         user_input = {"user": user, 'email': email, 'password': hashed}
-#     #         records.insert_one(user_input)
-
-#     #         user_data = records.find_one({"email": email})
-#     #         new_email = user_data['email']
-
-#     #         return render_template('feed.html', email = new_email)
-#     return render_template('index.html')
-
-
 #run app
 if __name__ == "__main__":
 
 
     PORT = os.getenv('PORT', 5001)
-    HOST = os.getenv('host', '0.0.0.0')
+    HOST = os.getenv('HOST', '0.0.0.0')
     app.run(host=HOST, port=PORT)
