@@ -18,13 +18,13 @@
         </div>
         <div style = "color: #330662;"class="container home">
             
-            <h1 style="font-family: GothamBold; color: #330662; margin-top: 15px;"> View Post </h1>
+            <h1> View Post </h1>
             <div class="single-post"> 
                 <h5 style="font-family: GothamBold; color: #330662; margin-top: 15px;"> @{{post['username']}} – <i> {{post['time_since']}} </i> </h5>
                 <p> {{post['upvotes']|length}} likes, {{post['downvotes']|length}} dislikes</p>
         
-                <img style="display:block; width: 50%; margin-left: auto; margin-right: auto;" src="{{ post['photo'] }}" alt="post" /> 
-                <p class="text-center"> {{post['prompt']}} </p>
+                <img class='single-post-photo' src="{{ post['photo'] }}" alt="post" /> 
+                <p class="prompt-single-post text-center"> {{post['prompt']}} </p>
 
             </div>
             <div class="post-comments">
