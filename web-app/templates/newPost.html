@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../static/css/style.css" />
   </head>
   <body>
+    <div style="margin-left: 10%; margin-top: 10px;"> 
+      <a href="/feed" class="btn btn-outline-primary"> <i class="bi bi-arrow-left"></i> Back to feed </a>
+  </div>
     <form method="POST">
     <div class="container home new-post">
       <h1> New Post </h1>
@@ -13,6 +16,7 @@
         <p> <b> Your generated caption: </b> </p> 
         <p> {{prompt}} <p>
       </div>
+      <p style="color: #330662;"class="small"> <b> Note: </b> Pressing the Retry button will allow you to take another photo, but it will also generate a new caption. </p>
       <h3>Post your reaction to the caption!</h3>
       <div id="camera">
         <!-- Camera sensor -->
@@ -23,7 +27,7 @@
         <div class = "button-container">
           <button class="btn btn-primary" id="camera--trigger"> Click! </button>
           <button style="display: none;"class="btn btn-outline-primary" id="camera--submit"> Continue </button>
-          
+          <a id="retry"class= "btn btn-outline-primary" href=""> Retry </a>
         </div>
         <img alt="user's input image"> 
 
