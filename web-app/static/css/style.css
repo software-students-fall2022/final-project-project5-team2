@@ -1,0 +1,258 @@
+@font-face {
+    font-family: GothamBold;
+    src: url(../css/fonts/gotham/Gotham-Bold.otf);
+}
+
+.welcome {
+    margin-top: 40px;
+}
+
+.btn.btn-outline-primary {
+    border: 1px solid #330662;
+    color: #330662;    
+}
+
+.btn.btn-outline-primary:hover {
+    border: 1px solid #330662;
+    background-color: #330662;
+    color: white;
+}
+
+.btn.btn-primary {
+    border: 1px solid #702b9d !important;
+    background-color: #702b9d !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn.btn-primary:hover{
+    border: 1px solid #330662 !important;
+    background-color: #330662 !important;
+}
+
+body {
+    background-color: #eee6f3;
+}
+
+.login h1 {
+    font-family: GothamBold;
+}
+
+.login {
+    color: #330662;  
+    width: 70%;
+    margin-top: 40px;
+}
+
+#loginUser {
+    margin-bottom: 15px;
+}
+
+#loginPassword {
+    margin-bottom: 15px;
+}
+
+.btn.btn-outline-primary.filter {
+    padding-top: 6px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.home {
+    margin-top: 10px;
+
+}
+
+.search {
+    background-color:  #fcf9fe;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: 1px solid #7b5aa6 ;
+    color:#330662;
+    padding: 8px;
+    font-size: 15px;
+}
+
+.btn.btn-outline-primary.search {
+    font-size: 13px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+#new-post-text {
+    color:white;
+    padding: 15px;
+    background-color:#330662 ;
+    border-radius: 10px;
+    border: 1px solid #7b5aa6 ;
+    margin-bottom: 10px;
+
+}
+
+#new-post-text > *{
+    margin-bottom: 5px;
+}
+
+#post-options {
+    padding: 10px;
+    text-align: center;
+}
+
+.posts-container {
+    margin-bottom: 20px;
+}
+
+.post {
+    background-color: #7b5aa6b8;
+    border: 1px solid #330662;
+    border-radius: 10px;
+    margin:0;
+    padding: 10px;
+    display: flex !important;
+    justify-content: center !important;
+
+}
+
+.post-info {
+    color: white;
+    padding: 10px;
+    margin: 0;
+}
+
+.single-post {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #7b5aa648 !important;
+    border: 1px solid #330662;
+    border-radius: 10px;
+}
+
+.comment {
+    background-color: white;
+    padding: 15px 25px;
+    border: 1px solid #330662;
+    border-radius: 15px;
+    height: fit-content;
+    margin-bottom: 10px;
+
+}
+
+.prompt-single-post {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    font-style: italic;
+}
+
+.topnav-right {
+  padding-right: 20px; 
+  padding-top: 10px; 
+  height: 10px; 
+  text-align: right;
+  color:#330662 !important;
+
+}
+
+h1 {
+  font-family: GothamBold; 
+  color: #330662;
+}
+
+.filter {
+  margin-bottom: 10px;
+}
+
+.col-likes {
+  font-size: 17px; 
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.img-post {
+  width: 95%;
+}
+.prompt {
+  width: 95%;
+  padding: 20px 0 0 0;
+
+}
+
+.btn-newpost {
+  font-size: 15px !important; 
+  font-family: GothamBold !important;
+}
+
+.here-btn {
+  color: #330662; 
+  text-decoration: underline;
+}
+.here-btn:hover {
+  color: #330662; 
+  text-decoration: underline;
+}
+.here-btn:active {
+  color: #330662; 
+  text-decoration: underline;
+}
+
+h3 {
+  color:#330662;
+}
+#camera, #camera--view, #camera--sensor, #camera--output{
+  position: fixed;
+  height: 50%;
+  width: 50%;
+  object-fit: cover;
+}#camera--view, #camera--sensor, #camera--output{
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+
+.taken{
+  height: 100px!important;
+  width: 100px!important;
+  transition: all 0.5s ease-in;
+  border: solid 3px white;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.button-container {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+}
+
+/* .button-container > * {
+ 
+
+} */
+
+.votes {
+  color: white;
+}
+
+.votes:hover {
+  color:#330662;
+}
+
+.votes-p {
+  text-align: center; 
+  margin-right: 0; 
+  margin-left: 0; 
+  margin-bottom: 0px;
+}
+
+.single-post-photo {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
