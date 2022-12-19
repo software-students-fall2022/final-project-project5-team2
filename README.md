@@ -21,7 +21,7 @@ Users can choose to create or not create an account. Those who choose to not cre
 
 # Running Photobooth (for Developers) 
 
-## Running locally 
+## Running and editing locally 
 1. Clone repo. 
 2. In your local copy of the repo, run the following command in your Terminal:
 
@@ -41,7 +41,9 @@ flask run
 
 to start the server. 
 
-## Using Docker to access server
+6. Check out http://127.0.0.1:5000 in your browser, on your machine. 
+
+## Using Docker to run server locally
 
 1. Ensure that Docker is running on your machine. 
 
@@ -56,6 +58,8 @@ docker pull pbaggio/nyu-photobooth
 ```console
 docker run pbaggio/nyu-photobooth
 ```
+
+5. Check out http://127.0.0.1:5001 in your browser, on your machine. 
 
 
 
