@@ -14,12 +14,13 @@
         <form method="POST" action="{{ url_for('index') }}">
           <button type="submit" class="btn btn-primary">Logout</a>
         </form>
+        <a>{{ username }}</a>
         {% else %}
         <form method="GET" action="{{ url_for('login') }}">
             <button type="submit" class="btn btn-primary"> Login </a>
           </form>
         {% endif %} 
-      </div>
+    </div>
     <div class = "container home">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
