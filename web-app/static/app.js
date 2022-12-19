@@ -28,6 +28,8 @@ cameraTrigger.onclick = function (e) {
   cameraTrigger.style = "display:none;";
   cameraSubmit.style = "display:block;";
 
+  document.getElementById("retry").style = "display: none;";
+
   document.getElementById("opImage").value = cameraOutput.src;
 }; // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
