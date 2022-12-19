@@ -154,6 +154,21 @@ def see_post(id):
     return render_template("post.html", post=post, logged_in=logged_in, username=user)
 
 
+@app.route("/post/<id>", methods=['POST'])
+def delete_post(id):
+  if "username" not in session:
+      return redirect(url_for("login"))
+  else:
+      user = session["username"]
+  if (request.method == "POST"):
+    id = ObjectId(id)
+
+    post = Database.find_single('photos', {'_id': id})
+    if post['username'] == user:
+        Database.delete_one('photos', {'_id': id})
+
+  return redirect(url_for("feed"))
+
 
 @app.route("/new-post",methods=['POST', 'GET'])
 def newPost():

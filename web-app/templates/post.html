@@ -20,19 +20,21 @@
             
             <h1> View Post </h1>
             <div class="single-post"> 
-                <h5 style="font-family: GothamBold; color: #330662; margin-top: 15px;"> @{{post['username']}} – <i> {{post['time_since']}} </i> </h5>
+                <h5 style="font-family: GothamBold; color: #330662; margin-top: 15px;"> @{{post['username']}} - <i> {{post['time_since']}} </i> </h5>
+                
                 <p> {{post['upvotes']|length}} likes, {{post['downvotes']|length}} dislikes</p>
         
                 <img class='single-post-photo' src="{{ post['photo'] }}" alt="post" /> 
                 <p class="prompt-single-post text-center"> {{post['prompt']}} </p>
-
+                
             </div>
+
             <div class="post-comments">
                 <h3 class= "col gx-0"style="font-family: GothamBold; color: #330662; margin-top: 15px;"> Comments ({{post['comments']|length}}) </h3>
                 {% if logged_in %}
                 <label for="user"> Add your comment </label>
                 <div class="container gx-0">
-                    <form method="POST" class="row mb-2 p-2">
+                    <form method="POST" class="row mb-2 p-2"  value ="">
                         <div class="col-11">
                             <input class="form-control" name="comment_body" aria-describedby="commentBody" placeholder="Your comment here" required>
                             <p class="small gx-1 mt-0"> <i> Commenting as @{{username}} </i> </p>
