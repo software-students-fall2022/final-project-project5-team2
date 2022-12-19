@@ -66,6 +66,7 @@
                                     {% endif %}
                                 </button>
                             </form>
+                            <p style="margin-top: 10px"> {{post['comments']|length}} <i class="bi bi-chat-left-dots"></i> </p>
                          </div>
 
                          <div class="col-11 p-0 post-info">
@@ -74,9 +75,11 @@
                             <p class="small"> <i>{{post['time_since']}}</i> </p>
                             <img class="img-post" src="{{ post['photo'] }}" alt="post">
                             <p class="small text-center prompt">{{ post['prompt'] }}</p>
-                            <div>
+                         
+                            
+
                             <a type="button" href="/post/{{ post['_id'] }}" style="font-size: 14px; float: right; margin-right: 40px; margin-top: -10px; margin-bottom: 10px;" class="btn btn-primary"> View Post <i class="bi bi-arrow-right"></i> </a>
-                            </div>
+                            
 
                          </div>
                     </div>
