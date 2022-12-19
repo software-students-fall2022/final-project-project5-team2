@@ -23,7 +23,7 @@
                 <h5 style="font-family: GothamBold; color: #330662; margin-top: 15px;"> @{{post['username']}} – <i> {{post['time_since']}} </i> </h5>
                 <p> {{post['upvotes']|length}} likes, {{post['downvotes']|length}} dislikes</p>
         
-                <img style="width: 95%; margin-left: auto; margin-right: auto;" src="{{ post['photo'] }}" alt="post" /> 
+                <img style="display:block; width: 50%; margin-left: auto; margin-right: auto;" src="{{ post['photo'] }}" alt="post" /> 
                 <p class="text-center"> {{post['prompt']}} </p>
 
             </div>
